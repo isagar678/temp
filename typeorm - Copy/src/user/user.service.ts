@@ -26,6 +26,10 @@ export class UserService {
     return this.userRepository.save(createdUsers);
   }
   
+  async createUser(createUserDto: CreateUserDto): Promise<User> {
+    const user = this.userRepository.create(createUserDto); // Create a user instance
+    return this.userRepository.save(user); // Save the user to the database
+  }
 
   // 4. Get All Orders of a Particular User
   async getOrdersByUserId(userId: number): Promise<Order[]> {
